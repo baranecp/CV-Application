@@ -1,44 +1,52 @@
 function CVPreview({ generalInfo, workExperience, education }) {
     return (
-        <div style={{ border: "1px solid #ccc", padding: "1rem", marginTop: "2rem" }}>
-            <h2>📄 CV Preview</h2>
-
-            {/* General Information */}
-            <section>
-                <h3>General Information</h3>
-                <p><strong>Name:</strong> {generalInfo.firstName} {generalInfo.lastName}</p>
-                <p><strong>Email:</strong> {generalInfo.email}</p>
-                <p><strong>Phone:</strong> {generalInfo.phone}</p>
-            </section>
+        <div className="bg-white shadow-lg rounded-2xl p-10 min-h-screen border border-gray-200">
+            {/* Header */}
+            <header className="text-center border-b-2 border-gray-300 pb-4 mb-6">
+                <h1 className="text-3xl font-bold text-gray-800">
+                    {generalInfo.firstName} {generalInfo.lastName}
+                </h1>
+                <p className="text-gray-600">{generalInfo.email} | {generalInfo.phone}</p>
+            </header>
 
             {/* Work Experience */}
-            <section>
-                <h3>Work Experience</h3>
+            <section className="mb-6">
+                <h2 className="text-xl font-semibold border-b border-gray-300 pb-1 mb-3">
+                    Work Experience
+                </h2>
                 {workExperience.length > 0 ? (
-                    <ul>
-                        {workExperience.map((exp, index) => (
-                            <li key={index}>
-                                <p><strong>{exp.role}</strong> at {exp.company}</p>
-                                <p>{exp.startDate} - {exp.endDate}</p>
-                            </li>
-                        ))}
-                    </ul>
-                ) : <p>No work experience added.</p>}
+                    workExperience.map((exp, index) => (
+                        <div key={index} className="mb-4">
+                            <h3 className="font-semibold text-gray-800">{exp.role}</h3>
+                            <p className="text-gray-700">{exp.company}</p>
+                            <p className="text-gray-500 text-sm">
+                                {exp.startDate} – {exp.endDate}
+                            </p>
+                        </div>
+                    ))
+                ) : (
+                    <p className="text-gray-400">No work experience added.</p>
+                )}
             </section>
 
             {/* Education */}
             <section>
-                <h3>Education</h3>
+                <h2 className="text-xl font-semibold border-b border-gray-300 pb-1 mb-3">
+                    Education
+                </h2>
                 {education.length > 0 ? (
-                    <ul>
-                        {education.map((edu, index) => (
-                            <li key={index}>
-                                <p><strong>{edu.degree}</strong> at {edu.school}</p>
-                                <p>{edu.startDate} - {edu.endDate}</p>
-                            </li>
-                        ))}
-                    </ul>
-                ) : <p>No education added.</p>}
+                    education.map((edu, index) => (
+                        <div key={index} className="mb-4">
+                            <h3 className="font-semibold text-gray-800">{edu.degree}</h3>
+                            <p className="text-gray-700">{edu.school}</p>
+                            <p className="text-gray-500 text-sm">
+                                {edu.startDate} – {edu.endDate}
+                            </p>
+                        </div>
+                    ))
+                ) : (
+                    <p className="text-gray-400">No education added.</p>
+                )}
             </section>
         </div>
     );

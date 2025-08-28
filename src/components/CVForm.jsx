@@ -62,9 +62,9 @@ export function CVForm() {
     }
 
     return (
-        <div style={{ display: "flex", gap: "2rem" }}>
-            <div style={{ flex: 1 }}>
-                <h1>CV Builder</h1>
+        <div className="flex gap-6 p-6 bg-gray-100 min-h-screen">
+            <div className="flex-1">
+                <h1 className="text-3xl font-bold mb-6">CV Builder</h1>
                 <GeneralInformation
                     info={cvData.generalInfo}
                     updateField={(field, value) =>
@@ -101,10 +101,10 @@ export function CVForm() {
                     }
                     removeEntry={(index) => removeEntry("education", index)}
                 />
-                <button onClick={handleSubmit}>Save All</button>
+                <button onClick={handleSubmit} className="mt-4 px-6 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 cursor-pointer">Save All</button>
             </div>
 
-            <div style={{ flex: 1 }}>
+            <div className="flex-1">
                 <CVPreview
                     generalInfo={cvData.generalInfo}
                     workExperience={cvData.workExperience}
