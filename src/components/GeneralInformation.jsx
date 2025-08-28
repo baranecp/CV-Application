@@ -47,6 +47,16 @@ function GeneralInformation({ info, updateField }) {
                         value={info.phone}
                         onChange={handleChange}
                     />
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">About Me</label>
+                        <textarea
+                            value={info.aboutMe}
+                            onChange={(e) => updateField("aboutMe", e.target.value)}
+                            className="mt-1 w-full p-2 border rounded-lg h-28 resize-none focus:ring-2 focus:ring-purple-400 focus:outline-none"
+                            placeholder="Write a short professional summary..."
+                        />
+                    </div>
+
                     <button
                         type="submit"
                         className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 cursor-pointer"
@@ -59,6 +69,7 @@ function GeneralInformation({ info, updateField }) {
                     <p><strong>{info.firstName} {info.lastName}</strong></p>
                     <p>{info.email}</p>
                     <p>{info.phone}</p>
+                    <p className="text-gray-700 italic">{info.aboutMe}</p>
                     <button
                         onClick={() => setIsEditing(true)}
                         className="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 cursor-pointer"

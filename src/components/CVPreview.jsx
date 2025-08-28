@@ -1,6 +1,7 @@
 function CVPreview({ generalInfo, workExperience, education }) {
     return (
-        <div className="bg-white shadow-lg rounded-2xl p-10 min-h-screen border border-gray-200">
+        <div className="bg-white shadow-lg rounded-2xl p-10 min-h-screen border border-gray-200
+                overflow-hidden break-words w-[700px] mx-auto">
             {/* Header */}
             <header className="text-center border-b-2 border-gray-300 pb-4 mb-6">
                 <h1 className="text-3xl font-bold text-gray-800">
@@ -8,6 +9,17 @@ function CVPreview({ generalInfo, workExperience, education }) {
                 </h1>
                 <p className="text-gray-600">{generalInfo.email} | {generalInfo.phone}</p>
             </header>
+            {/* About Me */}
+            {generalInfo.aboutMe && (
+                <section className="mb-6">
+                    <h2 className="text-xl font-semibold border-b border-gray-300 pb-1 mb-3">
+                        About Me
+                    </h2>
+                    <p className="text-gray-700 leading-relaxed whitespace-pre-wrap break-words">
+                        {generalInfo.aboutMe}
+                    </p>
+                </section>
+            )}
 
             {/* Work Experience */}
             <section className="mb-6">

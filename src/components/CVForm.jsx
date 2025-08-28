@@ -10,7 +10,8 @@ export function CVForm() {
             firstName: "",
             lastName: "",
             email: "",
-            phone: ""
+            phone: "",
+            about: ""
         },
         workExperience: [
             { company: "", role: "", startDate: "", endDate: "" }
