@@ -1,27 +1,7 @@
 import { useState } from "react";
 
-function Education({ education, setEducation }) {
+function Education({ education, updateField, addEntry, removeEntry }) {
     const [isEditing, setIsEditing] = useState(true);
-
-    function handleChange(index, e) {
-        const { name, value } = e.target;
-        setEducation((prev) =>
-            prev.map((edu, i) =>
-                i === index ? { ...edu, [name]: value } : edu
-            )
-        );
-    }
-
-    function handleAdd() {
-        setEducation((prev) => [
-            ...prev,
-            { school: "", degree: "", startDate: "", endDate: "" }
-        ]);
-    }
-
-    function handleRemove(index) {
-        setEducation((prev) => prev.filter((_, i) => i !== index));
-    }
 
     return (
         <div>
@@ -34,32 +14,32 @@ function Education({ education, setEducation }) {
                                 name="school"
                                 placeholder="School"
                                 value={edu.school}
-                                onChange={(e) => handleChange(index, e)}
+                                onChange={(e) => updateField("school", e.target.value, index)}
                             />
                             <input
                                 name="degree"
                                 placeholder="Degree"
                                 value={edu.degree}
-                                onChange={(e) => handleChange(index, e)}
+                                onChange={(e) => updateField("degree", e.target.value, index)}
                             />
                             <input
                                 type="date"
                                 name="startDate"
                                 value={edu.startDate}
-                                onChange={(e) => handleChange(index, e)}
+                                onChange={(e) => updateField("startDate", e.target.value, index)}
                             />
                             <input
                                 type="date"
                                 name="endDate"
                                 value={edu.endDate}
-                                onChange={(e) => handleChange(index, e)}
+                                onChange={(e) => updateField("endDate", e.target.value, index)}
                             />
-                            <button type="button" onClick={() => handleRemove(index)}>
+                            <button type="button" onClick={() => removeEntry(index)}>
                                 Remove
                             </button>
                         </div>
                     ))}
-                    <button type="button" onClick={handleAdd}>➕ Add Education</button>
+                    <button type="button" onClick={addEntry}>➕ Add Education</button>
                     <button type="button" onClick={() => setIsEditing(false)}>Save</button>
                 </>
             ) : (

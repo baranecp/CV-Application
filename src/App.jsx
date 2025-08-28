@@ -1,12 +1,12 @@
 import './App.css'
-import GeneralInformation from './components/GeneralInformation'
+import CVForm from './components/CVForm'
 
 function App() {
 
 
   return (
     <>
-     <GeneralInformation />
+      <CVForm />
     </>
   )
 }
