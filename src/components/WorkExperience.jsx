@@ -4,56 +4,77 @@ function WorkExperience({ workExperience, updateField, addEntry, removeEntry }) 
     const [isEditing, setIsEditing] = useState(true);
 
     return (
-        <div>
-            <h2>Work Experience</h2>
+        <div className="bg-white shadow-md rounded-2xl p-6 mb-6">
+            <h2 className="text-xl font-semibold mb-4">Work Experience</h2>
             {isEditing ? (
                 <>
                     {workExperience.map((exp, index) => (
-                        <div key={index}>
+                        <div key={index} className="mb-4 space-y-2 border-b pb-4">
                             <input
-                                name="company"
+                                className="w-full border rounded-lg p-2 focus:ring-2 focus:ring-blue-500"
                                 placeholder="Company"
                                 value={exp.company}
                                 onChange={(e) => updateField("company", e.target.value, index)}
                             />
                             <input
-                                name="role"
+                                className="w-full border rounded-lg p-2 focus:ring-2 focus:ring-blue-500"
                                 placeholder="Role"
                                 value={exp.role}
                                 onChange={(e) => updateField("role", e.target.value, index)}
                             />
-                            <input
-                                type="date"
-                                name="startDate"
-                                value={exp.startDate}
-                                onChange={(e) => updateField("startDate", e.target.value, index)}
-                            />
-                            <input
-                                type="date"
-                                name="endDate"
-                                value={exp.endDate}
-                                onChange={(e) => updateField("endDate", e.target.value, index)}
-                            />
-                            <button type="button" onClick={() => removeEntry(index)}>
+                            <div className="flex gap-2">
+                                <input
+                                    className="flex-1 border rounded-lg p-2 focus:ring-2 focus:ring-blue-500"
+                                    type="date"
+                                    value={exp.startDate}
+                                    onChange={(e) => updateField("startDate", e.target.value, index)}
+                                />
+                                <input
+                                    className="flex-1 border rounded-lg p-2 focus:ring-2 focus:ring-blue-500"
+                                    type="date"
+                                    value={exp.endDate}
+                                    onChange={(e) => updateField("endDate", e.target.value, index)}
+                                />
+                            </div>
+                            <button
+                                onClick={() => removeEntry(index)}
+                                className="text-red-600 hover:underline cursor-pointer"
+                            >
                                 Remove
                             </button>
                         </div>
                     ))}
-                    <button type="button" onClick={addEntry}>➕ Add Work</button>
-                    <button type="button" onClick={() => setIsEditing(false)}>Save</button>
+                    <div className="flex gap-2">
+                        <button
+                            onClick={addEntry}
+                            className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 cursor-pointer"
+                        >
+                            ➕ Add Work
+                        </button>
+                        <button
+                            onClick={() => setIsEditing(false)}
+                            className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 cursor-pointer"
+                        >
+                            Save
+                        </button>
+                    </div>
                 </>
             ) : (
                 <div>
                     {workExperience.map((exp, index) => (
-                        <p key={index}>
-                            <strong>{exp.role}</strong> at {exp.company} ({exp.startDate} - {exp.endDate})
+                        <p key={index} className="mb-2">
+                            <strong>{exp.role}</strong> at {exp.company} ({exp.startDate} – {exp.endDate})
                         </p>
                     ))}
-                    <button type="button" onClick={() => setIsEditing(true)}>Edit</button>
+                    <button
+                        onClick={() => setIsEditing(true)}
+                        className="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700"
+                    >
+                        Edit
+                    </button>
                 </div>
             )}
         </div>
     );
 }
-
 export default WorkExperience;
